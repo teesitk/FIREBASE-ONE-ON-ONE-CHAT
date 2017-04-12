@@ -1,0 +1,24 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": false,
+    "users": {
+      ".indexOn": "uuid",
+      ".read": "auth != null",
+      ".write": false,
+      "$user_id": {
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['name', 'uuid'])"     
+      }
+    },
+    "messages": {
+      ".indexOn": "roomId",
+      ".read": "auth != null",
+      ".write": false,
+      "$message_id": {
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['name', 'text', 'roomId'])"     
+      }
+    }
+  }
+}
